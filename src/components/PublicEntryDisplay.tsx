@@ -5,7 +5,7 @@ import EditButton from "@/components/EditButton";
 import ExitParkingButton from "@/components/ExitParkingButton";
 import ParkedButton from "@/components/ParkedButton";
 
-import { formatTime } from "@/actions/convertTimeToDuration";
+import { checkOverdue, formatTime } from "@/actions/convertTimeToDuration";
 import { usePolling } from "@/hooks/usePolling";
 import { entry_schema } from "@/types";
 
@@ -29,11 +29,7 @@ export const PublicDisplay = ({ entries }: { entries: entry_schema[] }) => {
               {entry.plate}
             </div>
             <div className="col-start-4 col-end-5 self-center">
-              {entry.status === "Reserved" ? (
-                <div className="text-[--money] rounded-3xl">{entry.status}</div>
-              ) : (
-                <div>{entry.status}</div>
-              )}
+              <div>{entry.status}</div>
             </div>
             <div className="col-start-5 col-end-6 self-center">
               {formatTime(entry.time_parked)}

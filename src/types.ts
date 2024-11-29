@@ -3,6 +3,6 @@ export type entry_schema = {
   type: "Motor" | "Car" | "Van";
   owner: string;
   plate: string;
-  status: "Parking" | "Reserved";
+  status: "Parking" | "Reserved" | "Rejected" | "Pending" | "Exited";
   time_parked: Date;
 };

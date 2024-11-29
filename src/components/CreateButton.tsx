@@ -24,7 +24,6 @@ export default function CreateButton({
   const cap = path === "/dashboard" ? 50 : 30;
   const count = path === "/dashboard" ? pubCount : priCount;
   const isFull = count >= cap;
-  console.log(isFull);
 
   return (
     <>

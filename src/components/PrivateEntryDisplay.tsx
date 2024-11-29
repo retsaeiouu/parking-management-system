@@ -1,6 +1,6 @@
 "use client";
 
-import { formatTime } from "@/actions/convertTimeToDuration";
+import { checkOverdue, formatTime } from "@/actions/convertTimeToDuration";
 import DeleteButton from "@/components/DeleteButton";
 import EditButton from "@/components/EditButton";
 import ExitParkingButton from "@/components/ExitParkingButton";
@@ -29,11 +29,17 @@ export const PrivateDisplay = ({ entries }: { entries: entry_schema[] }) => {
               {entry.plate}
             </div>
             <div className="col-start-4 col-end-5 self-center">
-              {entry.status === "Reserved" ? (
-                <div className="text-[--money] rounded-3xl">{entry.status}</div>
-              ) : (
-                <div>{entry.status}</div>
-              )}
+              {entry.status === "Reserved" &&
+                checkOverdue(entry.time_parked) && (
+                  <div className="text-[--delete] rounded-3xl">Overdue</div>
+                )}
+              {entry.status === "Reserved" &&
+                !checkOverdue(entry.time_parked) && (
+                  <div className="text-[--money] rounded-3xl">
+                    {entry.status}
+                  </div>
+                )}
+              {entry.status === "Parking" && <div>{entry.status}</div>}
             </div>
             <div className="col-start-5 col-end-6 self-center">
               {formatTime(entry.time_parked)}
@@ -45,7 +51,11 @@ export const PrivateDisplay = ({ entries }: { entries: entry_schema[] }) => {
                 plate={entry.plate}
                 type={entry.type}
               />
-              <DeleteButton id={entry.id} />
+              {entry.status === "Reserved" ? (
+                <DeleteButton id={entry.id} isReserved={true} />
+              ) : (
+                <DeleteButton id={entry.id} isReserved={false} />
+              )}
               {entry.status === "Reserved" ? (
                 <ParkedButton id={entry.id} />
               ) : (

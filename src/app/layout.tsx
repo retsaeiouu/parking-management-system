@@ -14,7 +14,6 @@ export const metadata: Metadata = {
 //  TODO:
 //    search by plate no.
 //    implement history logs
-//    implement user reservation page (for private entries only)
 
 export default function RootLayout({
   children,

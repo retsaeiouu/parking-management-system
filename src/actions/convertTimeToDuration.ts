@@ -15,3 +15,14 @@ export const formatTime = (timestamp) => {
   if (diffHours < 24) return `${diffHours} hour${diffHours > 1 ? "s" : ""} ago`;
   return "more than 24 hours ago";
 };
+
+export const checkOverdue = (timestamp) => {
+  const now = moment().tz("Asia/Manila") as any;
+  const time = moment(timestamp).tz("Asia/Manila") as any;
+  const diff = now - time;
+  const diffSeconds = Math.floor(diff / 1000);
+  const diffMinutes = Math.floor(diffSeconds / 60);
+  const diffHours = Math.floor(diffMinutes / 60);
+
+  return diffHours >= 2 ? true : false;
+};

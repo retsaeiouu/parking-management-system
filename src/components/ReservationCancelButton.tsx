@@ -1,35 +1,33 @@
 "use client";
 
 import { useState } from "react";
+
 import {
   Dialog,
   DialogBackdrop,
   DialogPanel,
   DialogTitle,
 } from "@headlessui/react";
-import { TrashIcon, ExclamationTriangleIcon } from "@heroicons/react/24/solid";
-import { deletePrivateEntry, deletePublicEntry } from "@/actions/deleteEntries";
-import { usePathname, useRouter } from "next/navigation";
-import { rejectReservation } from "@/actions/editEntries";
+import { ExclamationTriangleIcon } from "@heroicons/react/24/solid";
+import {
+  deleteReservationEntry,
+  exitReservation,
+  removeCookie,
+} from "@/actions/deleteEntries";
+import { useRouter } from "next/navigation";
 
-export default function DeleteButton({
-  id,
-  isReserved,
-}: {
-  id: number;
-  isReserved: boolean;
-}) {
-  const [open, setOpen] = useState(false);
-  const url = usePathname();
-  let deleteAction =
-    url === "/dashboard/private" ? deletePrivateEntry : deletePublicEntry;
-  if (isReserved) deleteAction = rejectReservation;
+export const CancelButton = ({ id }: { id: number }) => {
   const router = useRouter();
+
+  const [open, setOpen] = useState(false);
 
   return (
     <>
-      <button onClick={() => setOpen(true)}>
-        <TrashIcon className="transition-all duration-200 ease-in-out text-[--delete] h-6 w-6 hover:scale-[1.2]" />
+      <button
+        onClick={() => setOpen(true)}
+        className="mt-auto font-montserrat font-semibold hover:text-[--delete]"
+      >
+        cancel my reservation
       </button>
       <Dialog
         open={open}
@@ -60,13 +58,13 @@ export default function DeleteButton({
                       as="h3"
                       className="text-lg font-montserrat font-semibold text-foreground"
                     >
-                      Delete Parking Entry
+                      Cancel Reservation
                     </DialogTitle>
                     <div className="mt-2">
                       <p className="text-base text-secondaryforeground">
-                        Are you sure you want to delete this entry? All of this
-                        entry&apos;s data will be permanently removed. This
-                        action cannot be undone.
+                        Are you sure you want to cancel your reservation? This
+                        will be permanently removed. This action cannot be
+                        undone.
                       </p>
                     </div>
                   </div>
@@ -76,7 +74,7 @@ export default function DeleteButton({
                 <button
                   type="button"
                   onClick={async () => {
-                    await deleteAction(id);
+                    await deleteReservationEntry(id);
                     router.refresh();
                     setOpen(false);
                   }}
@@ -99,4 +97,26 @@ export default function DeleteButton({
       </Dialog>
     </>
   );
-}
+};
+
+export const ReservationExitButton = ({ id }: { id: number }) => {
+  return (
+    <button
+      onClick={async () => exitReservation(id)}
+      className="mt-auto font-montserrat font-semibold hover:opacity-70"
+    >
+      create a new request
+    </button>
+  );
+};
+
+export const Exit = () => {
+  return (
+    <button
+      onClick={async () => await removeCookie()}
+      className="mt-auto font-montserrat font-semibold hover:opacity-70"
+    >
+      create a new request
+    </button>
+  );
+};

@@ -37,6 +37,6 @@ export const login = async (_: unknown, formData: FormData) => {
 
   const cookieStore = await cookies();
   cookieStore.set("parkingsystemcookie", result.rows.at(0).id);
-  revalidatePath("/");
+  revalidatePath("/admin");
   return redirect("/dashboard");
 };

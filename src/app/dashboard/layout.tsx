@@ -1,8 +1,13 @@
-import { getPrivateEntries, getPublicEntries } from "@/actions/getEntries";
+import {
+  getAllReservations,
+  getPrivateEntries,
+  getPublicEntries,
+} from "@/actions/getEntries";
 import { validateRequest } from "@/actions/validateRequest";
 import CreateButton from "@/components/CreateButton";
 import { PrivateCard, PublicCard } from "@/components/DashboardCards";
 import { LogoutButton } from "@/components/LogoutButton";
+import { NotificationIcon } from "@/components/ReservationNotification";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { redirect } from "next/navigation";
 
@@ -12,16 +17,18 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const user = await validateRequest();
-  if (!user) return redirect("/");
+  if (!user) return redirect("/admin");
 
   const pub = await getPublicEntries();
   const pri = await getPrivateEntries();
+  const reservations = (await getAllReservations()) || [];
 
   return (
     <div className="h-full w-full grid grid-rows-12 gap-1">
       <div className="row-span-1 bg-secondary w-full px-8 flex items-center">
         <div className="font-bold text-3xl">Parking Dashboard</div>
         <div className="flex items-center gap-5 ml-auto">
+          <NotificationIcon reservations={reservations} />
           <div className="text-base p-2 px-4 bg-primary text-secondary font-bold rounded-3xl">
             view logs
           </div>
@@ -47,7 +54,7 @@ export default async function RootLayout({
                 <input
                   type="text"
                   name="search"
-                  placeholder="search by name"
+                  placeholder="search by plate"
                   className="text-lg rounded-3xl w-full px-5 py-1 border-0 bg-transparent focus:ring-0"
                 />
               </div>

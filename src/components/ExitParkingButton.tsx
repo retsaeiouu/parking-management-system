@@ -9,12 +9,13 @@ import {
 } from "@headlessui/react";
 import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/solid";
 import { usePathname, useRouter } from "next/navigation";
-import { ExitPrivateEntry, ExitPublicEntry } from "@/actions/ExitEntry";
+import { ExitPublicEntry } from "@/actions/ExitEntry";
+import { exitPrivateEntry } from "@/actions/editEntries";
 
 export default function ExitParkingButton({ id }: { id: number }) {
   const [open, setOpen] = useState(false);
   const path = usePathname();
-  const action = path === "/dashboard" ? ExitPublicEntry : ExitPrivateEntry;
+  const action = path === "/dashboard" ? ExitPublicEntry : exitPrivateEntry;
   const router = useRouter();
 
   return (

@@ -79,24 +79,33 @@ export default function CreateForm({ setOpen }) {
               </div>
             </div>
 
-            <div className="sm:col-span-3">
-              <label
-                htmlFor="status"
-                className="block text-sm/6 font-medium text-foreground"
-              >
-                Entry Type
-              </label>
-              <div className="mt-2">
-                <select
-                  id="status"
-                  name="status"
-                  className="block w-full rounded-3xl border-0 py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary sm:max-w-xs sm:text-sm/6"
+            {path === "/dashboard/private" ? (
+              <div className="sm:col-span-3">
+                <label
+                  htmlFor="status"
+                  className="block text-sm/6 font-medium text-foreground"
                 >
-                  <option>Parking</option>
-                  <option>Reserved</option>
-                </select>
+                  Entry Type
+                </label>
+                <div className="mt-2">
+                  <select
+                    id="status"
+                    name="status"
+                    className="block w-full rounded-3xl border-0 py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary sm:max-w-xs sm:text-sm/6"
+                  >
+                    <option>Parking</option>
+                    <option>Reserved</option>
+                  </select>
+                </div>
               </div>
-            </div>
+            ) : (
+              <input
+                name="status"
+                className="hidden"
+                readOnly
+                value="Parking"
+              />
+            )}
           </div>
         </div>
       </div>

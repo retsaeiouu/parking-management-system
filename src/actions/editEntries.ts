@@ -22,6 +22,34 @@ export const editPrivateEntryAction = async (data: FormData) => {
                 WHERE id = $4`,
     [data.get("type"), data.get("owner"), data.get("plate"), data.get("id")],
   );
+
   revalidatePath("/dashboard/private");
   redirect("/dashboard/private");
+};
+
+export const rejectReservation = async (id: number) => {
+  await db.query(
+    `UPDATE private_entry
+                SET status = 'Rejected'
+                WHERE id = $1`,
+    [id],
+  );
+};
+
+export const acceptReservation = async (id: number) => {
+  await db.query(
+    `UPDATE private_entry
+                SET status = 'Reserved', time_parked = NOW()
+                WHERE id = $1`,
+    [id],
+  );
+};
+
+export const exitPrivateEntry = async (id: number) => {
+  await db.query(
+    `UPDATE private_entry
+                SET status = 'Exited'
+                WHERE id = $1`,
+    [id],
+  );
 };

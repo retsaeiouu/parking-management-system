@@ -8,5 +8,5 @@ export const logout = async () => {
   const cookieStore = await cookies();
   cookieStore.delete("parkingsystemcookie");
   revalidatePath("/dashboard");
-  return redirect("/");
+  return redirect("/admin");
 };
