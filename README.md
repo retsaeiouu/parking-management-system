@@ -1,6 +1,6 @@
 # About
 
-## Data Structures and Algorithms project**-**Parking Management System
+## Data Structures and Algorithms project - Parking Management System
 
 _A user-friendly web-admin page for managing parking entries with the following features:_
 
