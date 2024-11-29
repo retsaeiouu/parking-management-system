@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+import forms from "@tailwindcss/forms";
+
 export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,11 +10,17 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: "Montserrat Variable",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        secondary: "var(--secondary)",
+        secondaryforeground: "var(--secondary-foreground)",
+        primary: "var(--primary)",
       },
     },
   },
-  plugins: [],
+  plugins: [forms],
 } satisfies Config;
