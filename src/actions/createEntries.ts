@@ -23,8 +23,8 @@ export const createPublicEntry = async (data: FormData) => {
 export const createPrivateEntry = async (data: FormData) => {
   if (data.get("status") === "Pending") {
     const result = await db.query(
-      `INSERT INTO private_entry (type, owner, plate, status, time_parked)
-                  VALUES ($1, $2, $3, $4, $5)
+      `INSERT INTO private_entry (type, owner, plate, status, time_parked, contact)
+                  VALUES ($1, $2, $3, $4, $5, $6)
                   RETURNING id`,
       [
         data.get("type"),
@@ -32,6 +32,7 @@ export const createPrivateEntry = async (data: FormData) => {
         data.get("plate"),
         data.get("status"),
         null,
+        data.get("contact"),
       ],
     );
 

@@ -13,7 +13,7 @@ export const formatTime = (timestamp) => {
   if (diffMinutes < 60)
     return `${diffMinutes} minute${diffMinutes > 1 ? "s" : ""} ago`;
   if (diffHours < 24) return `${diffHours} hour${diffHours > 1 ? "s" : ""} ago`;
-  return "more than 24 hours ago";
+  return "more than a day";
 };
 
 export const checkOverdue = (timestamp) => {

@@ -45,10 +45,19 @@ export const acceptReservation = async (id: number) => {
   );
 };
 
+export const exitPublicEntry = async (id: number) => {
+  await db.query(
+    `UPDATE public_entry
+                SET status = 'Exited', time_exited = NOW()
+                WHERE id = $1`,
+    [id],
+  );
+};
+
 export const exitPrivateEntry = async (id: number) => {
   await db.query(
     `UPDATE private_entry
-                SET status = 'Exited'
+                SET status = 'Exited', time_exited = NOW()
                 WHERE id = $1`,
     [id],
   );

@@ -54,6 +54,26 @@ export const ReservationForm = () => {
               </div>
             </div>
           </div>
+          <div className="sm:col-span-4">
+            <label
+              htmlFor="contact"
+              className="block text-lg font-medium text-secondaryforeground"
+            >
+              Contact
+            </label>
+            <div className="mt-2">
+              <div className="flex rounded-3xl shadow-sm ring-1 ring-inset ring-background focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary w-full">
+                <input
+                  id="contact"
+                  name="contact"
+                  type="text"
+                  placeholder="09XXXXXXXXX"
+                  required
+                  className="text-lg block flex-1 border-0 bg-transparent py-1.5 pl-4 text-foreground placeholder:text-gray-400 focus:ring-0"
+                />
+              </div>
+            </div>
+          </div>
           <div className="sm:col-span-3">
             <label
               htmlFor="type"

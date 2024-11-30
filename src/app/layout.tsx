@@ -11,9 +11,10 @@ export const metadata: Metadata = {
   description: "",
 };
 
-//  TODO:
-//    search by plate no.
-//    implement history logs
+// TODO: test if everything works properly
+// TODO: search by plate no.
+
+// FIXME: RESERVATION PAGE LOOKS LIKE SHIT IT NEEDS FIXING
 
 export default function RootLayout({
   children,

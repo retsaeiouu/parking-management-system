@@ -1,11 +1,14 @@
 import {
   getAllReservations,
   getPrivateEntries,
+  getPrivateHistory,
   getPublicEntries,
+  getPublicHistory,
 } from "@/actions/getEntries";
 import { validateRequest } from "@/actions/validateRequest";
 import CreateButton from "@/components/CreateButton";
 import { PrivateCard, PublicCard } from "@/components/DashboardCards";
+import { EntryLogs } from "@/components/EntryLogs";
 import { LogoutButton } from "@/components/LogoutButton";
 import { NotificationIcon } from "@/components/ReservationNotification";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
@@ -21,6 +24,8 @@ export default async function RootLayout({
 
   const pub = await getPublicEntries();
   const pri = await getPrivateEntries();
+  const pubHis = (await getPublicHistory()) || [];
+  const priHis = (await getPrivateHistory()) || [];
   const reservations = (await getAllReservations()) || [];
 
   return (
@@ -29,9 +34,7 @@ export default async function RootLayout({
         <div className="font-bold text-3xl">Parking Dashboard</div>
         <div className="flex items-center gap-5 ml-auto">
           <NotificationIcon reservations={reservations} />
-          <div className="text-base p-2 px-4 bg-primary text-secondary font-bold rounded-3xl">
-            view logs
-          </div>
+          <EntryLogs publicEntries={pubHis} privateEntries={priHis} />
           <LogoutButton />
         </div>
       </div>
