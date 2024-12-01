@@ -12,7 +12,7 @@ export const PrivateCard = ({ count }: { count: number }) => {
     <Link
       href="/dashboard/private"
       className={`
-        hover:scale-[1.02] transition-all duration-200 ease-in-out flex justify-center items-center col-span-1 rounded-3xl
+        hover:scale-[1.02] active:scale-[0.99] transition-all duration-200 ease-in-out flex justify-center items-center col-span-1 rounded-3xl
         ${path !== "/dashboard/private" ? "bg-secondary text-secondaryforeground" : "drop-shadow-xl bg-primary text-secondary"}
       `}
     >
@@ -41,7 +41,7 @@ export const PublicCard = ({ count }: { count: number }) => {
     <Link
       href="/dashboard"
       className={`
-        hover:scale-[1.02] transition-all duration-200 ease-in-out flex justify-center items-center col-span-1 rounded-3xl
+        hover:scale-[1.02] active:scale-[0.99] transition-all duration-200 ease-in-out flex justify-center items-center col-span-1 rounded-3xl
         ${path !== "/dashboard" ? "bg-secondary text-secondaryforeground" : "drop-shadow-xl bg-primary text-secondary"}
       `}
     >

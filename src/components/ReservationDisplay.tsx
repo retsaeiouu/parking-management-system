@@ -8,6 +8,7 @@ import {
 import { usePolling } from "@/hooks/usePolling";
 import { entry_schema } from "@/types";
 import {
+  ArrowDownCircleIcon,
   ClockIcon,
   ExclamationCircleIcon,
   InformationCircleIcon,
@@ -63,8 +64,11 @@ export const ReservationDisplay = ({
           )}
           {entry.status === "Parking" && (
             <div className="text-primary flex items-center gap-4">
-              <ClockIcon className="h-7 w-7" />
-              <div className="font-black">{formatTime(entry.time_parked)}</div>
+              <ArrowDownCircleIcon className="h-7 w-7" />
+              <div className="font-black">
+                <span className="font-semibold font-montserrat">Parked</span>{" "}
+                {formatTime(entry.time_parked)}
+              </div>
             </div>
           )}
           {entry.status === "Rejected" && (

@@ -95,7 +95,7 @@ const LoginButton = () => {
       ) : (
         <button
           type="submit"
-          className="mt-auto bg-primary text-secondary font-semibold w-full rounded-3xl p-2 hover:bg-[#59639c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+          className="transition-all duration-200 ease-out active:scale-95 mt-auto bg-primary text-secondary font-semibold w-full rounded-3xl p-2 hover:bg-[#59639c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
         >
           Login
         </button>

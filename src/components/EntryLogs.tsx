@@ -28,7 +28,7 @@ export const EntryLogs = ({
   return (
     <>
       <button onClick={() => setOpen(true)}>
-        <div className="text-base p-2 px-4 bg-primary text-secondary font-bold rounded-3xl">
+        <div className="transition-all duration-200 ease-out active:scale-90 hover:bg-[--highlight] text-base p-2 px-4 bg-primary text-secondary font-bold rounded-3xl">
           view logs
         </div>
       </button>
@@ -137,7 +137,7 @@ export const EntryLogs = ({
                 onClick={() => setOpen(false)}
                 className="absolute top-[3%] right-[2%]"
               >
-                <XMarkIcon className="h-7 w-7 text-secondaryforeground" />
+                <XMarkIcon className="transition-all duration-200 ease-out active:scale-90 h-7 w-7 text-secondaryforeground" />
               </button>
             </DialogPanel>
           </div>

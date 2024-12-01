@@ -114,7 +114,7 @@ export default function CreateForm({ setOpen }) {
         <button
           onClick={() => setOpen(false)}
           type="button"
-          className="text-base font-bold text-foreground"
+          className="text-base font-bold text-foreground hover:opacity-70"
         >
           cancel
         </button>
@@ -138,7 +138,7 @@ const CreateButton = () => {
       ) : (
         <button
           type="submit"
-          className="rounded-3xl bg-primary hover:bg-[#59639c] px-3 py-2 text-base font-montserrat font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+          className="transition-all duration-200 ease-out active:scale-90 rounded-3xl bg-primary hover:bg-[#59639c] px-3 py-2 text-base font-montserrat font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
         >
           create
         </button>

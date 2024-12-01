@@ -65,9 +65,17 @@ export const PrivateDisplay = ({ entries }: { entries: entry_schema[] }) => {
                 type={entry.type}
               />
               {entry.status === "Reserved" ? (
-                <DeleteButton id={entry.id} isReserved={true} />
+                <DeleteButton
+                  id={entry.id}
+                  isReserved={true}
+                  contact={entry.contact}
+                />
               ) : (
-                <DeleteButton id={entry.id} isReserved={false} />
+                <DeleteButton
+                  id={entry.id}
+                  isReserved={false}
+                  contact={entry.contact}
+                />
               )}
               {entry.status === "Reserved" ? (
                 <ParkedButton id={entry.id} />

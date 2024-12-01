@@ -29,7 +29,7 @@ export const NotificationIcon = ({
       {reservations.length > 0 ? (
         <>
           <button onClick={() => setOpen(true)}>
-            <BellAlertIcon className="animate-swing text-secondaryforeground h-7 w-7" />
+            <BellAlertIcon className="transition-all duration-200 ease-out active:scale-90 hover:animate-none animate-swing text-secondaryforeground h-7 w-7" />
           </button>
           <Dialog
             open={open}
@@ -89,7 +89,7 @@ export const NotificationIcon = ({
                                     router.refresh();
                                   }}
                                 >
-                                  <XMarkIcon className="transition-all duration-200 ease-in-out hover:scale-[1.1] h-7 w-7 text-secondary bg-[--delete] p-1 rounded-full" />
+                                  <XMarkIcon className="transition-all duration-200 ease-in-out hover:scale-[1.1] active:scale-90 h-7 w-7 text-secondary bg-[--delete] p-1 rounded-full" />
                                 </button>
                                 <button
                                   onClick={async () => {
@@ -97,7 +97,7 @@ export const NotificationIcon = ({
                                     router.refresh();
                                   }}
                                 >
-                                  <CheckIcon className="transition-all duration-200 ease-in-out hover:scale-[1.1] h-7 w-7 text-secondary bg-[--money] p-1 rounded-full" />
+                                  <CheckIcon className="transition-all duration-200 ease-in-out hover:scale-[1.1] active:scale-90 h-7 w-7 text-secondary bg-[--money] p-1 rounded-full" />
                                 </button>
                               </div>
                             </div>
@@ -112,7 +112,7 @@ export const NotificationIcon = ({
                     onClick={() => setOpen(false)}
                     className="absolute top-[3%] right-[2%]"
                   >
-                    <XMarkIcon className="h-7 w-7 text-secondaryforeground" />
+                    <XMarkIcon className="transition-all duration-200 ease-out active:scale-90 h-7 w-7 text-secondaryforeground" />
                   </button>
                 </DialogPanel>
               </div>
@@ -122,7 +122,7 @@ export const NotificationIcon = ({
       ) : (
         <>
           <button onClick={() => setOpen(true)}>
-            <BellIcon className="text-secondaryforeground h-7 w-7" />
+            <BellIcon className="transition-all duration-200 ease-out hover:scale-110 active:scale-90 text-secondaryforeground h-7 w-7" />
           </button>
           <Dialog
             open={open}

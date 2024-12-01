@@ -31,14 +31,14 @@ export default function CreateButton({
         <button
           onClick={() => setOpen(true)}
           disabled
-          className="transition-all duration-200 ease-in-out flex items-center gap-2 bg-[--delete] text-secondary font-montserrat font-semibold p-2 px-10 rounded-3xl"
+          className="opacity-80 transition-all duration-200 ease-in-out flex items-center gap-2 bg-[--delete] text-secondary font-montserrat font-semibold p-2 px-10 rounded-3xl"
         >
           full
         </button>
       ) : (
         <button
           onClick={() => setOpen(true)}
-          className="transition-all duration-200 ease-in-out hover:scale-[1.04] flex items-center gap-2 bg-primary text-secondary font-montserrat font-semibold p-2 px-4 rounded-3xl"
+          className="transition-all duration-200 ease-out hover:bg-[--highlight] active:scale-90 flex items-center gap-2 bg-primary text-secondary font-montserrat font-semibold p-2 px-4 rounded-3xl"
         >
           create
           <PlusIcon className="h-6 w-6" />

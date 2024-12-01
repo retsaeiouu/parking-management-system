@@ -21,7 +21,7 @@ export default function ExitParkingButton({ id }: { id: number }) {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="transition-all duration-200 ease-in-out hover:scale-[1.04] flex gap-2 bg-[--money] ml-auto text-secondary rounded-3xl px-8 py-2 items-center"
+        className="transition-all duration-200 ease-out hover:scale-[1.03] active:scale-95 flex gap-2 bg-[--money] ml-auto text-secondary rounded-3xl px-8 py-2 items-center"
       >
         exit parking
         <ArrowRightStartOnRectangleIcon className="text-secondary h-6 w-6" />
@@ -74,7 +74,7 @@ export default function ExitParkingButton({ id }: { id: number }) {
                     router.refresh();
                     setOpen(false);
                   }}
-                  className="inline-flex w-full justify-center rounded-3xl bg-[--money] px-3 py-2 text-base font-montserrat font-semibold text-white shadow-sm hover:bg-green-600 sm:ml-3 sm:w-auto"
+                  className="transition-all duration-200 ease-out active:scale-90 inline-flex w-full justify-center rounded-3xl bg-[--money] px-3 py-2 text-base font-montserrat font-semibold text-white shadow-sm hover:bg-green-600 sm:ml-3 sm:w-auto"
                 >
                   Confirm
                 </button>
@@ -82,7 +82,7 @@ export default function ExitParkingButton({ id }: { id: number }) {
                   type="button"
                   data-autofocus
                   onClick={() => setOpen(false)}
-                  className="mt-3 inline-flex w-full justify-center px-3 py-2 text-base font-montserrat font-semibold text-gray-900 sm:mt-0 sm:w-auto"
+                  className="hover:opacity-70 mt-3 inline-flex w-full justify-center px-3 py-2 text-base font-montserrat font-semibold text-gray-900 sm:mt-0 sm:w-auto"
                 >
                   cancel
                 </button>

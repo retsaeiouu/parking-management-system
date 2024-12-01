@@ -15,21 +15,23 @@ import { rejectReservation } from "@/actions/editEntries";
 export default function DeleteButton({
   id,
   isReserved,
+  contact,
 }: {
   id: number;
   isReserved: boolean;
+  contact: string;
 }) {
   const [open, setOpen] = useState(false);
   const url = usePathname();
   let deleteAction =
     url === "/dashboard/private" ? deletePrivateEntry : deletePublicEntry;
-  if (isReserved) deleteAction = rejectReservation;
+  if (isReserved && contact != null) deleteAction = rejectReservation;
   const router = useRouter();
 
   return (
     <>
       <button onClick={() => setOpen(true)}>
-        <TrashIcon className="transition-all duration-200 ease-in-out text-[--delete] h-6 w-6 hover:scale-[1.2]" />
+        <TrashIcon className="transition-all duration-200 ease-out text-[--delete] h-6 w-6 hover:scale-110 active:scale-90" />
       </button>
       <Dialog
         open={open}
@@ -80,7 +82,7 @@ export default function DeleteButton({
                     router.refresh();
                     setOpen(false);
                   }}
-                  className="inline-flex w-full justify-center rounded-3xl bg-[--delete] px-3 py-2 text-base font-montserrat font-semibold text-white shadow-sm hover:bg-red-700 sm:ml-3 sm:w-auto"
+                  className="transition-all duration-200 ease-out active:scale-90 inline-flex w-full justify-center rounded-3xl bg-[--delete] px-3 py-2 text-base font-montserrat font-semibold text-white shadow-sm hover:bg-red-700 sm:ml-3 sm:w-auto"
                 >
                   Delete
                 </button>
@@ -88,7 +90,7 @@ export default function DeleteButton({
                   type="button"
                   data-autofocus
                   onClick={() => setOpen(false)}
-                  className="mt-3 inline-flex w-full justify-center px-3 py-2 text-base font-montserrat font-semibold text-gray-900 sm:mt-0 sm:w-auto"
+                  className="hover:opacity-70 mt-3 inline-flex w-full justify-center px-3 py-2 text-base font-montserrat font-semibold text-gray-900 sm:mt-0 sm:w-auto"
                 >
                   cancel
                 </button>

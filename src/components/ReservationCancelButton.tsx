@@ -25,7 +25,7 @@ export const CancelButton = ({ id }: { id: number }) => {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="mt-auto font-montserrat font-semibold hover:text-[--delete]"
+        className="transition-all duration-200 ease-out active:scale-90 mt-auto font-montserrat font-semibold hover:text-[--delete]"
       >
         cancel my reservation
       </button>
@@ -78,7 +78,7 @@ export const CancelButton = ({ id }: { id: number }) => {
                     router.refresh();
                     setOpen(false);
                   }}
-                  className="inline-flex w-full justify-center rounded-3xl bg-[--delete] px-3 py-2 text-base font-montserrat font-semibold text-white shadow-sm hover:bg-red-700 sm:ml-3 sm:w-auto"
+                  className="transition-all duration-200 ease-out active:scale-90 inline-flex w-full justify-center rounded-3xl bg-[--delete] px-3 py-2 text-base font-montserrat font-semibold text-white shadow-sm hover:bg-red-700 sm:ml-3 sm:w-auto"
                 >
                   Delete
                 </button>
@@ -86,7 +86,7 @@ export const CancelButton = ({ id }: { id: number }) => {
                   type="button"
                   data-autofocus
                   onClick={() => setOpen(false)}
-                  className="mt-3 inline-flex w-full justify-center px-3 py-2 text-base font-montserrat font-semibold text-gray-900 sm:mt-0 sm:w-auto"
+                  className="opacity-70 mt-3 inline-flex w-full justify-center px-3 py-2 text-base font-montserrat font-semibold text-gray-900 sm:mt-0 sm:w-auto"
                 >
                   cancel
                 </button>
@@ -103,7 +103,7 @@ export const ReservationExitButton = ({ id }: { id: number }) => {
   return (
     <button
       onClick={async () => exitReservation(id)}
-      className="mt-auto font-montserrat font-semibold hover:opacity-70"
+      className="transition-all duration-200 ease-out active:scale-90 mt-auto font-montserrat font-semibold hover:opacity-70"
     >
       create a new request
     </button>
@@ -114,7 +114,7 @@ export const Exit = () => {
   return (
     <button
       onClick={async () => await removeCookie()}
-      className="mt-auto font-montserrat font-semibold hover:opacity-70"
+      className="transition-all duration-200 ease-out active:scale-90 mt-auto font-montserrat font-semibold hover:opacity-70"
     >
       create a new request
     </button>

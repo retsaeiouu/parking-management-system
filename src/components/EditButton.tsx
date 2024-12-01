@@ -17,7 +17,7 @@ export default function EditButton({ id, name, plate, type }) {
   return (
     <>
       <button onClick={() => setOpen(true)}>
-        <PencilIcon className="transition-all duration-200 ease-in-out h-6 w-6 hover:scale-[1.2]" />
+        <PencilIcon className="transition-all duration-200 ease-out h-6 w-6 active:scale-90 hover:scale-110" />
       </button>
       <Dialog
         open={open}
