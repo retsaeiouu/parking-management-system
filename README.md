@@ -23,9 +23,13 @@ _A user-friendly web-admin page for managing parking entries with the following 
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
 
 [Fuse.js](https://www.fusejs.io/) - searching library
+
 [Headless UI](https://headlessui.com/) - ui library
+
 [FontSource](https://fontsource.org/) - fonts library
+
 [HeroIcons](https://heroicons.com/) - Icons library
+
 [ngrok](https://ngrok.com/) - used for http tunneling
 
 ---
