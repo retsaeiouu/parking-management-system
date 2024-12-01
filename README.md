@@ -6,9 +6,9 @@ _A user-friendly web-admin page for managing parking entries with the following 
 
 - Real-time
 - Organized
-- Reservation Page (WIP)
-- Search by plate no. (WIP)
-- History Logs (WIP)
+- Reservation Page
+- Search by plate no.
+- History Log
 
 ---
 
@@ -22,7 +22,11 @@ _A user-friendly web-admin page for managing parking entries with the following 
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
 
-[Headless UI](https://headlessui.com/), [FontSource](https://fontsource.org/), [HeroIcons](https://heroicons.com/), [ngrok](https://ngrok.com/)
+[Fuse.js](https://www.fusejs.io/) - searching library
+[Headless UI](https://headlessui.com/) - ui library
+[FontSource](https://fontsource.org/) - fonts library
+[HeroIcons](https://heroicons.com/) - Icons library
+[ngrok](https://ngrok.com/) - used for http tunneling
 
 ---
 
@@ -33,3 +37,5 @@ _A user-friendly web-admin page for managing parking entries with the following 
 ![private page](./public/images/private-entry.png)
 ![create entry](./public/images/create-entry.png)
 ![mark as parked](./public/images/mark-as-parked.png)
+![reservation panel](./public/images/reservation-panel.png)
+![history log](./public/images/history-log.png)
