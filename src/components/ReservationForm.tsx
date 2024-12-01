@@ -5,7 +5,7 @@ import { useFormStatus } from "react-dom";
 
 export const ReservationForm = () => {
   return (
-    <div className="overflow-auto h-[75%] lg:h-[32rem] w-[90%] lg:w-[50%] bg-secondary rounded-3xl drop-shadow-2xl">
+    <div className="overflow-auto h-[80%] lg:h-[34rem] w-[90%] lg:w-[50%] bg-secondary rounded-3xl drop-shadow-2xl">
       <form
         className="flex flex-col h-full p-8 gap-3 text-2xl font-montserrat"
         action={createPrivateEntry}

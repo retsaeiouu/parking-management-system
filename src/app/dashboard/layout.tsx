@@ -11,7 +11,7 @@ import { PrivateCard, PublicCard } from "@/components/DashboardCards";
 import { EntryLogs } from "@/components/EntryLogs";
 import { LogoutButton } from "@/components/LogoutButton";
 import { NotificationIcon } from "@/components/ReservationNotification";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { SearchComponent } from "@/components/SearchComponent";
 import { redirect } from "next/navigation";
 
 export default async function RootLayout({
@@ -51,20 +51,8 @@ export default async function RootLayout({
           <div className="col-start-3 col-end-4 self-center">Plate No.</div>
           <div className="col-start-4 col-end-5 self-center">Status</div>
           <div className="col-start-5 col-end-6 self-center">Duration</div>
-          <div className="col-start-6 col-end-8 flex items-center gap-2">
-            <form className="flex items-center gap-2">
-              <div className="flex rounded-3xl ring-2 ring-inset ring-secondaryforeground opacity-50 focus-within:ring-2 hover:opacity-100 focus-within:ring-inset focus-within:opacity-100">
-                <input
-                  type="text"
-                  name="search"
-                  placeholder="search by plate"
-                  className="text-lg rounded-3xl w-full px-5 py-1 border-0 bg-transparent focus:ring-0"
-                />
-              </div>
-              <button type="submit">
-                <MagnifyingGlassIcon className="text-secondaryforeground opacity-60 hover:opacity-100 h-7 w-7" />
-              </button>
-            </form>
+          <div className="col-start-6 col-end-8 flex items-center gap-4">
+            <SearchComponent />
             <CreateButton pubCount={pub.length} priCount={pri.length} />
           </div>
         </div>

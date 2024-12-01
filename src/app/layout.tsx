@@ -1,20 +1,12 @@
-import type { Metadata } from "next";
+"use client";
+
+import { SearchProvider } from "@/context/SearchContext";
 import "./globals.css";
 
 // Supports weights 300-700
 import "@fontsource-variable/comfortaa";
 // Supports weights 100-900
 import "@fontsource-variable/montserrat";
-
-export const metadata: Metadata = {
-  title: "Parking System",
-  description: "",
-};
-
-// TODO: test if everything works properly
-// TODO: search by plate no.
-
-// FIXME: RESERVATION PAGE LOOKS LIKE SHIT IT NEEDS FIXING
 
 export default function RootLayout({
   children,
@@ -23,9 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="h-screen w-screen flex flex-col justify-center items-center antialiased">
-        {children}
-      </body>
+      <SearchProvider>
+        <body className="h-screen w-screen flex flex-col justify-center items-center antialiased">
+          {children}
+        </body>
+      </SearchProvider>
     </html>
   );
 }

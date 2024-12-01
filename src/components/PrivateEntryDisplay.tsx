@@ -5,16 +5,29 @@ import DeleteButton from "@/components/DeleteButton";
 import EditButton from "@/components/EditButton";
 import ExitParkingButton from "@/components/ExitParkingButton";
 import ParkedButton from "@/components/ParkedButton";
+import { useSearch } from "@/context/SearchContext";
 
 import { usePolling } from "@/hooks/usePolling";
 import { entry_schema } from "@/types";
+import Fuse from "fuse.js";
 
 export const PrivateDisplay = ({ entries }: { entries: entry_schema[] }) => {
+  const { query } = useSearch();
+
+  const fuse = new Fuse(entries, {
+    keys: ["owner", "plate"],
+    threshold: 0.3,
+  });
+
+  const results = query
+    ? fuse.search(query).map((result) => result.item)
+    : entries;
+
   usePolling(5000);
   return (
     <>
-      {entries.at(0) ? (
-        entries.map((entry) => (
+      {results.at(0) ? (
+        results.map((entry) => (
           <div
             key={entry.id}
             className="grid grid-cols-7 text-center font-black text-lg"
@@ -66,7 +79,7 @@ export const PrivateDisplay = ({ entries }: { entries: entry_schema[] }) => {
         ))
       ) : (
         <div className="self-center mt-4 text-xl font-bold">
-          There are no entries yet
+          There are no existing entries
         </div>
       )}
     </>

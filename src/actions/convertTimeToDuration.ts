@@ -24,5 +24,33 @@ export const checkOverdue = (timestamp) => {
   const diffMinutes = Math.floor(diffSeconds / 60);
   const diffHours = Math.floor(diffMinutes / 60);
 
+  // return diffMinutes >= 2 ? true : false;
   return diffHours >= 2 ? true : false;
+};
+
+export const getTimeLeft = (time) => {
+  const inputTime = moment(time).tz("Asia/Manila") as any;
+  const currentTime = moment().tz("Asia/Manila") as any;
+
+  const timeDifference = currentTime - inputTime;
+  const timeLimit = 2 * 60 * 60 * 1000;
+  // const timeLimit = 1000;
+  const timeLeft = timeLimit - timeDifference;
+
+  if (timeLeft <= 0) {
+    return "";
+  }
+
+  const hours = Math.floor(timeLeft / (60 * 60 * 1000));
+  const minutes = Math.floor((timeLeft % (60 * 60 * 1000)) / (60 * 1000));
+
+  if (hours > 1) {
+    return `${hours} hours left`;
+  } else if (hours === 1 && minutes > 0) {
+    return `${hours} hour ${minutes} mins left`;
+  } else if (minutes > 0) {
+    return `${minutes} mins left`;
+  } else {
+    return "Less than a minute left";
+  }
 };

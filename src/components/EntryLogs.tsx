@@ -10,6 +10,7 @@ import {
 } from "@headlessui/react";
 import {
   ArrowRightStartOnRectangleIcon,
+  UserIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
 import { entry_schema } from "@/types";
@@ -55,13 +56,13 @@ export const EntryLogs = ({
                       as="h3"
                       className="text-lg mb-4 text-center font-montserrat font-semibold text-secondaryforeground"
                     >
-                      History Logs
+                      History Log
                     </DialogTitle>
-                    <div className="flex flex-col gap-2 overflow-auto">
+                    <div className="flex flex-col gap-4 overflow-auto">
                       {publicEntries.length < 1 &&
                         privateEntries.length < 1 && (
-                          <div className="self-center font-black text-lg">
-                            There are currently no vehicle exited yet
+                          <div className="self-center font-semibold text-secondaryforeground text-lg">
+                            There are currently no vehicles exited yet
                           </div>
                         )}
                       {privateEntries.map((entry) => (
@@ -69,21 +70,30 @@ export const EntryLogs = ({
                           key={entry.id}
                           className="text-lg w-full flex px-2 justify-between"
                         >
-                          <div className="flex gap-3 items-center text-[--money]">
+                          <div className="flex gap-4 items-center text-[--money]">
                             <ArrowRightStartOnRectangleIcon className="h-7 w-7" />
-                            <div>
-                              {entry.type}{" "}
-                              <span className="font-semibold font-montserrat">
-                                {entry.plate}
-                              </span>{" "}
-                              exited the{" "}
-                              <span className="font-semibold font-montserrat">
-                                private
-                              </span>{" "}
-                              area
+                            <div className="flex flex-col">
+                              <div>
+                                <span className="font-semibold font-montserrat">
+                                  {entry.type} {entry.plate}
+                                </span>{" "}
+                                exited the{" "}
+                                <span className="font-semibold font-montserrat">
+                                  private
+                                </span>{" "}
+                                area
+                              </div>
+                              <div className="text-sm flex font font-montserrat font-semibold">
+                                <div className="flex items-center gap-2">
+                                  <UserIcon className="h-4 w-4" />
+                                  {entry.owner}
+                                </div>
+                              </div>
                             </div>
                           </div>
-                          <div>{formatTime(entry.time_exited)}</div>
+                          <div className="self-center font-montserrat font-semibold text-base">
+                            {formatTime(entry.time_exited)}
+                          </div>
                         </div>
                       ))}
                       {publicEntries.map((entry) => (
@@ -91,21 +101,30 @@ export const EntryLogs = ({
                           key={entry.id}
                           className="text-lg w-full flex px-2 justify-between"
                         >
-                          <div className="flex gap-3 items-center text-[--money]">
+                          <div className="flex gap-4 items-center text-[--money]">
                             <ArrowRightStartOnRectangleIcon className="h-7 w-7" />
-                            <div>
-                              {entry.type}{" "}
-                              <span className="font-semibold font-montserrat">
-                                {entry.plate}
-                              </span>{" "}
-                              exited the{" "}
-                              <span className="font-semibold font-montserrat">
-                                public
-                              </span>{" "}
-                              area
+                            <div className="flex flex-col">
+                              <div>
+                                <span className="font-semibold font-montserrat">
+                                  {entry.type} {entry.plate}
+                                </span>{" "}
+                                exited the{" "}
+                                <span className="font-semibold font-montserrat">
+                                  public
+                                </span>{" "}
+                                area
+                              </div>
+                              <div className="text-sm flex font font-montserrat font-semibold">
+                                <div className="flex items-center gap-4">
+                                  <UserIcon className="h-4 w-4" />
+                                  {entry.owner}
+                                </div>
+                              </div>
                             </div>
                           </div>
-                          <div>{formatTime(entry.time_exited)}</div>
+                          <div className="self-center font-montserrat font-semibold text-base">
+                            {formatTime(entry.time_exited)}
+                          </div>
                         </div>
                       ))}
                     </div>

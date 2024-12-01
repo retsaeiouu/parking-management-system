@@ -57,7 +57,7 @@ export const NotificationIcon = ({
                         >
                           Reservations
                         </DialogTitle>
-                        <div className="flex flex-col gap-2 overflow-auto">
+                        <div className="flex flex-col overflow-auto">
                           <div className="grid grid-cols-5 mb-4">
                             <div className="col-span-1">Type</div>
                             <div className="col-span-1">Name</div>
@@ -68,7 +68,7 @@ export const NotificationIcon = ({
                           {reservations.map((reservation) => (
                             <div
                               key={reservation.id}
-                              className="grid grid-cols-5 w-full font-black tracking-wide"
+                              className="grid grid-cols-5 w-full font-semibold font-montserrat text-lg tracking-wide py-2"
                             >
                               <div className="self-center col-span-1">
                                 {reservation.type}
@@ -89,7 +89,7 @@ export const NotificationIcon = ({
                                     router.refresh();
                                   }}
                                 >
-                                  <XMarkIcon className="h-7 w-7 text-secondary bg-[--delete] p-1 rounded-full" />
+                                  <XMarkIcon className="transition-all duration-200 ease-in-out hover:scale-[1.1] h-7 w-7 text-secondary bg-[--delete] p-1 rounded-full" />
                                 </button>
                                 <button
                                   onClick={async () => {
@@ -97,7 +97,7 @@ export const NotificationIcon = ({
                                     router.refresh();
                                   }}
                                 >
-                                  <CheckIcon className="h-7 w-7 text-secondary bg-[--money] p-1 rounded-full" />
+                                  <CheckIcon className="transition-all duration-200 ease-in-out hover:scale-[1.1] h-7 w-7 text-secondary bg-[--money] p-1 rounded-full" />
                                 </button>
                               </div>
                             </div>
