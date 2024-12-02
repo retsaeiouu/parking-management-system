@@ -7,7 +7,7 @@ _A user-friendly web-admin page for managing parking entries with the following 
 - Real-time
 - Organized
 - Reservation Page
-- Search by plate no.
+- Search features
 - History Log
 
 ---
