@@ -9,6 +9,7 @@ import { usePolling } from "@/hooks/usePolling";
 import { entry_schema } from "@/types";
 import {
   ArrowDownCircleIcon,
+  ArrowPathIcon,
   ClockIcon,
   ExclamationCircleIcon,
   InformationCircleIcon,
@@ -22,7 +23,7 @@ export const ReservationDisplay = ({
 }: {
   entry: entry_schema | null;
 }) => {
-  usePolling(5000);
+  usePolling(2000);
   return (
     <div className="flex flex-col gap-2 my-auto">
       {entry && (
@@ -43,7 +44,7 @@ export const ReservationDisplay = ({
           </div>
           {entry.status === "Pending" && (
             <div className="text-[--warn] flex items-center gap-4">
-              <InformationCircleIcon className="h-7 w-7" />
+              <ArrowPathIcon className="animate-spin h-7 w-7" />
               <div className="font-black">{entry.status}</div>
             </div>
           )}

@@ -80,7 +80,7 @@ export const CancelButton = ({ id }: { id: number }) => {
                   }}
                   className="transition-all duration-200 ease-out active:scale-90 inline-flex w-full justify-center rounded-3xl bg-[--delete] px-3 py-2 text-base font-montserrat font-semibold text-white shadow-sm hover:bg-red-700 sm:ml-3 sm:w-auto"
                 >
-                  Delete
+                  Confirm
                 </button>
                 <button
                   type="button"

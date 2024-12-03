@@ -6,6 +6,7 @@ import {
 } from "@/components/ReservationCancelButton";
 import { ReservationDisplay } from "@/components/ReservationDisplay";
 import { entry_schema } from "@/types";
+import { XCircleIcon } from "@heroicons/react/24/solid";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -49,8 +50,9 @@ export default async function Page() {
         </div>
       )}
       {!entry && (
-        <div className="self-center w-full text-[--delete] font-bold font-montserrat tracking-wide p-1 rounded-3xl text-center">
-          Your entry got deleted
+        <div className="flex items-center justify-center gap-2 self-center w-full text-[--delete] font-bold font-montserrat tracking-wide p-1 rounded-3xl text-center">
+          <XCircleIcon className="h-7 w-7" />
+          <div>Your entry got deleted</div>
         </div>
       )}
       <ReservationDisplay entry={entry} />

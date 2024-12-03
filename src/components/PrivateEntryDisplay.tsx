@@ -23,7 +23,7 @@ export const PrivateDisplay = ({ entries }: { entries: entry_schema[] }) => {
     ? fuse.search(query).map((result) => result.item)
     : entries;
 
-  usePolling(5000);
+  usePolling(2000);
   return (
     <>
       {results.at(0) ? (
