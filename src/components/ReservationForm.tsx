@@ -1,9 +1,12 @@
 "use client";
 
 import { createPrivateEntry } from "@/actions/createEntries";
+import { useState } from "react";
 import { useFormStatus } from "react-dom";
 
 export const ReservationForm = () => {
+  const [type, setType] = useState("Motor");
+
   return (
     <div className="overflow-auto h-[80%] lg:h-[34rem] w-[90%] lg:w-[50%] bg-secondary rounded-3xl drop-shadow-2xl">
       <form
@@ -35,7 +38,9 @@ export const ReservationForm = () => {
               </div>
             </div>
           </div>
-          <div className="sm:col-span-4">
+          <div
+            className={`sm:col-span-4 ${type === "Bike" || type === "E-Bike" ? "opacity-20" : ""}`}
+          >
             <label
               htmlFor="plate"
               className="block text-lg font-medium text-secondaryforeground"
@@ -48,7 +53,8 @@ export const ReservationForm = () => {
                   id="plate"
                   name="plate"
                   placeholder="1XX AXX"
-                  required
+                  disabled={type === "Bike" || type === "E-Bike"}
+                  required={type !== "Bike" && type !== "E-Bike"}
                   className="text-lg block flex-1 border-0 bg-transparent py-1.5 pl-4 text-foreground placeholder:text-gray-400 focus:ring-0"
                 />
               </div>
@@ -85,11 +91,17 @@ export const ReservationForm = () => {
               <select
                 id="type"
                 name="type"
+                value={type}
+                onChange={(e) => setType(e.target.value)}
                 className="bg-secondary block w-full rounded-3xl border-0 p-2 px-4 text-foreground text-lg shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary sm:max-w-xs sm:text-sm/6"
               >
-                <option>Motor</option>
-                <option>Car</option>
-                <option>Van</option>
+                <option value="Bike">Bike</option>
+                <option value="E-Bike">E-Bike</option>
+                <option value="Motor">Motor</option>
+                <option value="Tricycle">Tricycle</option>
+                <option value="Car">Car</option>
+                <option value="Van">Van</option>
+                <option value="Truck">Truck</option>
               </select>
             </div>
           </div>

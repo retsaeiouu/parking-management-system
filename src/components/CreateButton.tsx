@@ -1,6 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+
+import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogBackdrop,
@@ -8,33 +11,99 @@ import {
   DialogTitle,
   TransitionChild,
 } from "@headlessui/react";
-import { PlusIcon } from "@heroicons/react/24/solid";
+import { PlusIcon, PrinterIcon } from "@heroicons/react/24/solid";
 import CreateForm from "./CreateForm";
 import { usePathname } from "next/navigation";
+import { entry_schema } from "@/types";
+import {
+  convertTimeTo12HFormat,
+  getCurrentDate,
+} from "@/actions/convertTimeToDuration";
 
 export default function CreateButton({
+  pub,
+  pri,
   pubCount,
   priCount,
 }: {
+  pub: entry_schema[];
+  pri: entry_schema[];
   pubCount: number;
   priCount: number;
 }) {
   const [open, setOpen] = useState(false);
   const path = usePathname();
-  const cap = path === "/dashboard" ? 50 : 30;
+  const cap = path === "/dashboard" ? 3 : 30;
   const count = path === "/dashboard" ? pubCount : priCount;
   const isFull = count >= cap;
+  const filename = path === "/dashboard" ? "public-entries" : "private-entries";
+
+  const generatePDF = async () => {
+    const element = document.getElementById("pdf");
+    const canvas = await html2canvas(element as HTMLElement);
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF();
+    pdf.addImage(imgData, "PNG", 10, 10, 190, 0);
+    pdf.save(`${filename}.pdf`);
+  };
+
+  const entries = path === "/dashboard" ? pub : pri;
+  entries.reverse();
+
+  const [currentDate, setCurrentDate] = useState(null);
+  useEffect(() => {
+    const date = new Date();
+    const formattedDate = date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    setCurrentDate(formattedDate);
+  }, []);
 
   return (
     <>
       {isFull ? (
-        <button
-          onClick={() => setOpen(true)}
-          disabled
-          className="opacity-80 transition-all duration-200 ease-in-out flex items-center gap-2 bg-[--delete] text-secondary font-montserrat font-semibold p-2 px-10 rounded-3xl"
-        >
-          full
-        </button>
+        <>
+          <div
+            id="pdf"
+            className="h-screen w-screen flex flex-col p-5 text-2xl justify-start gap-1 items-center text-center font-montserrat font-semibold"
+            style={{ position: "absolute", left: "-9999px" }}
+          >
+            <div className="mb-12 flex flex-col gap-3">
+              <div className="text-5xl">
+                {path === "/dashboard" ? "Public " : "Private "}Parking Entries
+              </div>
+              <div className="text-xl">as of {currentDate}</div>
+            </div>
+            <div className="w-full grid grid-cols-5 mb-5 font-normal">
+              <div className="col-span-1">Type</div>
+              <div className="col-span-1">Owner</div>
+              <div className="col-span-1">Plate</div>
+              <div className="col-span-1">Status</div>
+              <div className="col-span-1">Time</div>
+            </div>
+            {entries &&
+              entries.map((entry) => (
+                <div key={entry.id} className="w-full grid grid-cols-5">
+                  <div className="col-span-1">{entry.type}</div>
+                  <div className="col-span-1">{entry.owner}</div>
+                  <div className="col-span-1">{entry.plate}</div>
+                  <div className="col-span-1">{entry.status}</div>
+                  <div className="col-span-1">
+                    {convertTimeTo12HFormat(entry.time_parked)}
+                  </div>
+                </div>
+              ))}
+          </div>
+          <button
+            onClick={generatePDF}
+            className="opacity-80 transition-all duration-200 ease-out hover:bg-gray-600 active:scale-90 flex items-center gap-2 bg-gray-500 text-secondary font-montserrat font-semibold p-2 px-6 rounded-3xl"
+          >
+            <div>print</div>
+            <PrinterIcon className="h-6 w-6" />
+          </button>
+        </>
       ) : (
         <button
           onClick={() => setOpen(true)}

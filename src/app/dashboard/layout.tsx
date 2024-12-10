@@ -53,7 +53,12 @@ export default async function RootLayout({
           <div className="col-start-5 col-end-6 self-center">Duration</div>
           <div className="col-start-6 col-end-8 flex items-center gap-4">
             <SearchComponent />
-            <CreateButton pubCount={pub.length} priCount={pri.length} />
+            <CreateButton
+              pub={pub}
+              pri={pri}
+              pubCount={pub.length}
+              priCount={pri.length}
+            />
           </div>
         </div>
 

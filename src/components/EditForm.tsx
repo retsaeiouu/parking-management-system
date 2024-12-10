@@ -5,6 +5,7 @@ import {
   editPublicEntryAction,
 } from "@/actions/editEntries";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { useFormStatus } from "react-dom";
 
 export default function EditForm({ setOpen, id, name, plate, type }) {
@@ -13,6 +14,9 @@ export default function EditForm({ setOpen, id, name, plate, type }) {
     path === "/dashboard/private"
       ? editPrivateEntryAction
       : editPublicEntryAction;
+
+  const [vehicleType, setVehicleType] = useState(type);
+
   return (
     <form action={action} onSubmit={() => setOpen(false)}>
       <div className="space-y-12">
@@ -46,7 +50,9 @@ export default function EditForm({ setOpen, id, name, plate, type }) {
               </div>
             </div>
 
-            <div className="sm:col-span-4">
+            <div
+              className={`sm:col-span-4 ${vehicleType === "Bike" || vehicleType === "E-Bike" ? "opacity-20" : ""}`}
+            >
               <label
                 htmlFor="plate"
                 className="block text-sm/6 font-medium text-gray-900"
@@ -61,8 +67,13 @@ export default function EditForm({ setOpen, id, name, plate, type }) {
                     type="text"
                     defaultValue={plate}
                     placeholder={plate}
+                    disabled={
+                      vehicleType === "Bike" || vehicleType === "E-Bike"
+                    }
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-foreground placeholder:text-gray-400 focus:ring-0 sm:text-sm/6"
-                    required
+                    required={
+                      vehicleType !== "Bike" && vehicleType !== "E-Bike"
+                    }
                   />
                 </div>
               </div>
@@ -79,12 +90,17 @@ export default function EditForm({ setOpen, id, name, plate, type }) {
                 <select
                   id="type"
                   name="type"
-                  defaultValue={type}
+                  value={vehicleType}
+                  onChange={(e) => setVehicleType(e.target.value)}
                   className="block w-full rounded-3xl border-0 py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary sm:max-w-xs sm:text-sm/6"
                 >
-                  <option>Motor</option>
-                  <option>Car</option>
-                  <option>Van</option>
+                  <option value="Bike">Bike</option>
+                  <option value="E-Bike">E-Bike</option>
+                  <option value="Motor">Motor</option>
+                  <option value="Tricycle">Tricycle</option>
+                  <option value="Car">Car</option>
+                  <option value="Van">Van</option>
+                  <option value="Truck">Truck</option>
                 </select>
               </div>
             </div>

@@ -84,9 +84,11 @@ export const EntryLogs = ({
                                 area
                               </div>
                               <div className="text-sm flex font font-montserrat font-semibold">
-                                <div className="flex items-center gap-2">
-                                  <UserIcon className="h-4 w-4" />
-                                  {entry.owner}
+                                <div className="flex items-center gap-5">
+                                  <div className="flex items-center gap-2">
+                                    <UserIcon className="h-4 w-4" />
+                                    {entry.owner}
+                                  </div>
                                 </div>
                               </div>
                             </div>

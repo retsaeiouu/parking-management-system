@@ -54,3 +54,22 @@ export const getTimeLeft = (time) => {
     return "Less than a minute left";
   }
 };
+
+export const convertTimeTo12HFormat = (time: Date) => {
+  return time
+    .toLocaleString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    })
+    .toLowerCase();
+};
+
+export const getCurrentDate = () => {
+  const date = new Date();
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};

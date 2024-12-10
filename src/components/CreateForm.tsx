@@ -2,12 +2,15 @@
 
 import { createPrivateEntry, createPublicEntry } from "@/actions/createEntries";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { useFormStatus } from "react-dom";
 
 export default function CreateForm({ setOpen }) {
   const path = usePathname();
   const action =
     path === "/dashboard/private" ? createPrivateEntry : createPublicEntry;
+  const [type, setType] = useState("Motor");
+
   return (
     <form action={action} onSubmit={() => setOpen(false)}>
       <div className="space-y-12">
@@ -38,7 +41,9 @@ export default function CreateForm({ setOpen }) {
               </div>
             </div>
 
-            <div className="sm:col-span-4">
+            <div
+              className={`sm:col-span-4 ${type === "Bike" || type === "E-Bike" ? "opacity-20" : ""}`}
+            >
               <label
                 htmlFor="plate"
                 className="block text-sm/6 font-medium text-gray-900"
@@ -52,8 +57,9 @@ export default function CreateForm({ setOpen }) {
                     name="plate"
                     type="text"
                     placeholder="1XX AXX"
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-foreground placeholder:text-gray-400 focus:ring-0 sm:text-sm/6"
-                    required
+                    disabled={type === "Bike" || type === "E-Bike"}
+                    className={`block flex-1 border-0 bg-transparent py-1.5 pl-3 text-foreground placeholder:text-gray-400 focus:ring-0 sm:text-sm/6`}
+                    required={type !== "Bike" && type !== "E-Bike"}
                   />
                 </div>
               </div>
@@ -70,11 +76,17 @@ export default function CreateForm({ setOpen }) {
                 <select
                   id="type"
                   name="type"
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
                   className="block w-full rounded-3xl border-0 py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary sm:max-w-xs sm:text-sm/6"
                 >
-                  <option>Motor</option>
-                  <option>Car</option>
-                  <option>Van</option>
+                  <option value="Bike">Bike</option>
+                  <option value="E-Bike">E-Bike</option>
+                  <option value="Motor">Motor</option>
+                  <option value="Tricycle">Tricycle</option>
+                  <option value="Car">Car</option>
+                  <option value="Van">Van</option>
+                  <option value="Truck">Truck</option>
                 </select>
               </div>
             </div>
