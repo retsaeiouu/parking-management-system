@@ -25,6 +25,7 @@ _A user-friendly web-admin page for managing parking entries with the following 
 - Reservation Page
 - Search features
 - History Log
+- PDF Generation
 
 ---
 
@@ -39,6 +40,8 @@ _A user-friendly web-admin page for managing parking entries with the following 
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
 
 [Fuse.js](https://www.fusejs.io/) - searching library
+
+[html2canvas](https://html2canvas.hertzen.com/) & [jspdf](http://raw.githack.com/MrRio/jsPDF/master/docs/index.html) - for generating PDF
 
 [Headless UI](https://headlessui.com/) - ui library
 

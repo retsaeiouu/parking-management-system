@@ -33,7 +33,7 @@ export default function CreateButton({
 }) {
   const [open, setOpen] = useState(false);
   const path = usePathname();
-  const cap = path === "/dashboard" ? 3 : 30;
+  const cap = path === "/dashboard" ? 50 : 30;
   const count = path === "/dashboard" ? pubCount : priCount;
   const isFull = count >= cap;
   const filename = path === "/dashboard" ? "public-entries" : "private-entries";
