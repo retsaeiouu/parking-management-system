@@ -1,19 +1,3 @@
-# TODO
-
-types
-
-- MTB
-- Road bike
-- Fixie
-- Gravel Bike
-- Tricycle
-- EBike
-- Bus
-- Truck
-
-- documents if full
-- details in history logs
-
 # About
 
 ## Data Structures and Algorithms project - Parking Management System
